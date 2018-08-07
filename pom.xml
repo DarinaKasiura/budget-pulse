@@ -89,9 +89,6 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.21.0</version>
 				<configuration>
-				<!--<suiteXMLFiles>-->
-				<!--<suiteXMLFile>smoke_test.xml</suiteXMLFile>-->
-				<!--</suiteXMLFiles>-->
 					<testFailureIgnore>true</testFailureIgnore>
 					<includes>
 						<include>**/*CukesRunner.java</include>
@@ -102,7 +99,7 @@
 			<plugin>
 				<groupId>net.masterthought</groupId>
 				<artifactId>maven-cucumber-reporting</artifactId>
-				<version>3.19.0</version>
+				<version>3.15.0</version>
 				<executions>
 					<execution>
 						<id>execution</id>
@@ -110,15 +107,24 @@
 						<goals>
 							<goal>generate</goal>
 						</goals>
-						<configuration>
-							<projectname>budget-pulse</projectname>
-							<!-- path to the report that will be generated -->
-							<outputdirectory>${project.build.directory}/target/cucumber-report</outputdirectory>
-							<!-- path to the json file that will be used to genetrate report -->
-							<!-- it has to match the one on the cukesrunner -->
-							<cucumberoutput>${project.build.directory}/target/cucumber.json</cucumberoutput>
-							<enableflashcharts></enableflashcharts>
-						</configuration>
+                        <configuration>
+                            <projectName>budget-pulse</projectName>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/target/cucumber.json</cucumberOutput>
+                            <jsonFiles>
+                                <!-- supports wildcard or name pattern -->
+                                <param>**/*.json</param>
+                            </jsonFiles>
+                            <parallelTesting>false</parallelTesting>
+                        </configuration>
+						<!--<configuration>-->
+							<!--<projectName>TestProject</projectName>-->
+							<!--&lt;!&ndash; path to the report that will be generated &ndash;&gt;-->
+							<!--<outputDirectory>${project.build.directory}cucumber-html-reports</outputDirectory>-->
+							<!--&lt;!&ndash; path to the json file that will be used to genetrate report &ndash;&gt;-->
+							<!--&lt;!&ndash; it has to match the one on the cukesrunner &ndash;&gt;-->
+							<!--<cucumberOutput>${project.build.directory}/target/cucumber.json</cucumberOutput>-->
+						<!--</configuration>-->
 					</execution>
 				</executions>
 
