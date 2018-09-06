@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Budget-Pulse Regression Automation">
+
+    <test name="Automated tests">
+        <classes>
+            <class name ="runners.CukesRunner"></class>
+        </classes>
+    </test>
+
+</suite>
